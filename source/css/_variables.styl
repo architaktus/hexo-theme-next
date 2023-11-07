@@ -387,3 +387,44 @@ $label = {
   warning : lighten(spin($note-border.warning, 10), 83% + $lbg),
   danger  : lighten(spin($note-border.danger, -10), 87% + $lbg)
 };
+
+
+
+
+
+
+
+// Variables of 原 Muse + Mist scheme
+// ==================================================
+
+$sidebar-width           = hexo-config('sidebar.width') is a 'unit' ? hexo-config('sidebar.width') : 320;
+$sidebar-desktop         = unit($sidebar-width, '%');
+
+$content-padding-bottom     = 60px;
+$posts-first-padding        = 70px;
+$posts-first-padding-mobile = 35px;
+
+// Variables of 原 Mist scheme
+// ==================================================
+$scheme-text-align          = left;
+
+$content-padding-bottom     = 80px;
+$posts-first-padding        = 80px;
+$posts-first-padding-mobile = 60px;
+
+$link-decoration-color   = $grey-light;
+$content-bg-color        = $whitesmoke;
+$menu-item-bg-color      = $grey-lighter;
+
+$brand-color             = $black-deep;
+$brand-hover-color       = $brand-color;
+$brand-padding           = 2px 1px;
+
+$posts-collapse-left     = 0;
+
+$btn-default-bg                 = transparent;
+$btn-default-color              = var(--link-color);
+$btn-default-hover-bg           = transparent;
+$btn-default-border-color       = var(--link-color);
+$btn-default-hover-color        = var(--link-hover-color);
+$btn-default-hover-border-color = var(--link-hover-color);

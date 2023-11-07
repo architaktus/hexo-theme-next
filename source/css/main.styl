@@ -8,8 +8,11 @@ $scheme = hexo-config('scheme') ? hexo-config('scheme') : 'Muse';
 
 // Variables Layer
 // --------------------------------------------------
+@import '_variables';
+/*    已合并入一个文件
 @import '_variables/base';
-@import '_variables/' + $scheme;
+@import '_variables/' + $scheme;*/
+
 for $inject_variable in hexo-config('injects.variable')
   @import $inject_variable;
 
@@ -38,7 +41,8 @@ for $inject_mixin in hexo-config('injects.mixin')
 
 // Schemes Layer
 // --------------------------------------------------
-@import '_schemes/' + $scheme;
+// @import '_schemes/' + $scheme;
+@import '_schemes';
 
 
 // Custom Layer

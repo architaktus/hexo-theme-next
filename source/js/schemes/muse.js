@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     hideSidebar: function() {
       document.body.classList.remove('sidebar-active');
+
     }
   };
   if (CONFIG.sidebar.display !== 'remove') sidebarToggleMotion.init();

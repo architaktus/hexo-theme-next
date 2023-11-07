@@ -12,9 +12,11 @@
 {%- endif %}
 
 {{- next_js('next-boot.js') }}
+
 {%- if theme.bookmark.enable %}
   {{- next_js('bookmark.js') }}
 {%- endif %}
+
 {%- if theme.pjax %}
   {{- next_js('pjax.js') }}
 {%- endif %}
