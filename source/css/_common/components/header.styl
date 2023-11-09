@@ -50,7 +50,14 @@
   &:hover {
     color: var(--brand-hover-color);
   }
+
+  //原schemes/muse/_header
+  +mobile() {
+    display: block;
+  }
 }
+
+
 
 @media (min-width: 760px) {
   .brand {
@@ -87,11 +94,7 @@
     top: -10px;
   }
 }
-//@import 'site-meta';
-@import 'site-nav';
-@import 'menu';
-@import 'bookmark';
-@import 'github-banner';
+
 
 
 
@@ -103,11 +106,13 @@
   background: var(--content-bg-color);
 }
 
+//大标题
 header.header {
   align-items: center;
   display: flex;
   padding: 20px 0;
   //padding-top: 100px;
+  post-body(); //TODO
 
   +mobile() {
     display: block;
@@ -115,7 +120,6 @@ header.header {
     //padding-top: 50px;
   }
 }
-
 
 .site-title {
   font-family: $font-family-logo;
@@ -158,3 +162,80 @@ header.header {
 
 
 
+/* TODO 原为手机设计的按钮。应与桌面版悬浮按钮合并。231108*/
+//原outline/header/site-nav
+.site-nav-toggle, .site-nav-right {
+  display: none;
+
+  +mobile() {
+    flex-column();
+  }
+
+  .toggle {
+    color: var(--text-color);
+    padding: 10px;
+    width: 22px;
+
+    .toggle-line {
+      background: var(--nav-menu-color); //var(--text-color);
+      border-radius: 1px;
+    }
+  }
+}
+
+.site-nav {
+  +mobile() {
+    site-nav-hide-by-default();
+  }
+}
+
+
+/*mixin*/
+site-nav-hide-by-default() {
+  --scroll-height: 0;
+  height: 0;
+  overflow: hidden;
+  transition: $transition-ease;
+  transition-property: height, visibility;
+  visibility: hidden;
+
+  body:not(.site-nav-on) & .animated {
+    animation: none;
+  }
+
+  body.site-nav-on & {
+    height: var(--scroll-height);
+    visibility: unset;
+  }
+}
+
+
+
+/*
+https://theme-next.js.org/docs/theme-settings/miscellaneous#Bookmark
+*/
+
+if (hexo-config('bookmark.enable')) {
+  .book-mark-link {
+    border-bottom: 0;
+    position: fixed;
+    top: -10px;
+    transition: top .3s;
+    sidebar-toggle-position(true);
+
+    +tablet-mobile() {
+      display: none;
+    }
+
+    &::before {
+      color: convert(hexo-config('bookmark.color'));
+      font-size: 32px;
+      line-height: 1;
+      font-family-icons('\f02e');
+    }
+  }
+
+  .book-mark-link:hover, .book-mark-link-fixed {
+    top: -2px;
+  }
+}

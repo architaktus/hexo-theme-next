@@ -30,13 +30,6 @@
 // ==================================================
 // Homepage
 // --------------------------------------------------
-//背景
-body.home {
-  background-color: #2e0008; //#ad0c27;
-  /*background-image: url();*/
-  background-position: center center;
-  background-size: cover;
-}
 
 .index {
   position: relative;
@@ -88,10 +81,7 @@ body.home {
 // 组件
 // ==================================================
 
-//大标题
-header.header {
-  post-body();
-}
+
 
 // Page - Container
 // --------------------------------------------------
@@ -117,7 +107,7 @@ header.header {
   left: 0;
   right: 0;
   right: var(--window-width-offset);
-  color: #ddd;
+  color: var(--nav-menu-color);
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -149,6 +139,7 @@ header.header {
 
   border-bottom: 0;//去掉链接的下划线
   background: none;
+  color: inherit;
   cursor: pointer;
   margin: 0;
   padding: 0;
@@ -156,6 +147,10 @@ header.header {
   font-size: 25px;
   width: var(--navigation-width);
   height: var(--navigation-height);
+
+  a {
+    color: inherit;
+  }
   }
 
 @media (min-width: 760px) {
@@ -209,20 +204,6 @@ hr {
 .pagination {
   +mobile() {
     margin: 80px 0 0;
-    text-align: center;
-  }
-}
-
-// Footer
-// --------------------------------------------------
-.footer {
-  background: var(--content-bg-color);
-  color: var(--text-color);
-  padding: 10px 0;
-}
-
-.footer-inner {
-  +mobile() {
     text-align: center;
   }
 }

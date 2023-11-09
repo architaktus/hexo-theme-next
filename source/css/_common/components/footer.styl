@@ -1,11 +1,16 @@
 // Footer Section
 // --------------------------------------------------
 .footer {
-  color: $grey-dark;
+  //color: $grey-dark;
   font-size: $font-size-small;
-  padding: 20px 0;
+  //padding: 20px 0;
   transition: $transition-ease;
   transition-property: left, right;
+
+  //这三个原为schemes/muse/_layout的内容
+  color: var(--text-color);
+  padding: 10px 0;
+  //background: var(--content-bg-color);
 
   &.footer-fixed {
     bottom: 0;
@@ -15,20 +20,28 @@
   }
 }
 
+
 // Flexbox layout makes it possible to reorder the child
 // elements of .footer-inner through the `order` CSS property
 .footer-inner {
   box-sizing: border-box;
-  text-align: $scheme-text-align;
+  text-align: center; //$scheme-text-align;
   flex-column();
   //post-body();
+
+  //原为schemes/muse/_layout的内容
+  +mobile() {
+    text-align: center;
+  }
 }
 
+/*
 .use-motion {
   .footer {
     opacity: 0;
   }
 }
+*/
 
 @keyframes icon-animate {
   0%, 100% {
