@@ -13,17 +13,148 @@
   display: flex;
   flex-shrink: 0;
   padding: 0 10px;
+  left: 0;
+  right: 0;
+  position: absolute;
+
+  flex-grow: 1;
+  text-align: center;
+  line-height: normal;
+
+    +mobile() {
+    text-align: center;
+  }
+}
+
+.brand {
+  /*
+  flex-grow: 1;  
+  line-height: normal;*/
+  
+  border-bottom: 0;//去掉链接的下划线
+  color: var(--brand-color);//inherit;
+  text-decoration: none;
+  position: relative;
+  display: block;//inline-block;
+  width: 100px;
+  //padding: $brand-padding;
+  //text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 11px;
+  margin-bottom: 11px;
+  //background-image: url(/images/logo.87bf7218039544397a6b321dd44c9887.svg); //TODO 在header.njk
+  background-size: cover;
+  z-index: 3;
+
+  &:hover {
+    color: var(--brand-hover-color);
+  }
+}
+
+@media (min-width: 760px) {
+  .brand {
+    width: 130px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+}
+@media (min-width: 960px) {
+  .brand {
+    width: 130px;
+    margin-top: 21px;
+    margin-bottom: 21px;
+  }
 }
 
 .use-motion {
   .column, .site-brand-container .toggle {
     opacity: 0;
   }
-}
 
-@import 'site-meta';
+  .logo-line:first-of-type {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  .logo-line:last-of-type {
+    transform: scaleX(0);
+    transform-origin: right;
+  }
+  .site-title, .site-subtitle, .custom-logo-image {
+    opacity: 0;
+    position: relative;
+    top: -10px;
+  }
+}
+//@import 'site-meta';
 @import 'site-nav';
 @import 'menu';
-
 @import 'bookmark';
 @import 'github-banner';
+
+
+
+
+// Header
+// 原 schemes的_header.styl
+// --------------------------------------------------
+.column {
+  background: var(--content-bg-color);
+}
+
+header.header {
+  align-items: center;
+  display: flex;
+  padding: 20px 0;
+  //padding-top: 100px;
+
+  +mobile() {
+    display: block;
+    padding: 10px 0;
+    //padding-top: 50px;
+  }
+}
+
+
+.site-title {
+  font-family: $font-family-logo;
+  font-size: $font-size-title;
+  font-weight: bolder;//normal;
+
+  line-height: 1.5;
+  margin: 0;
+}
+
+
+
+.site-subtitle {
+  display: none;
+  color: $subtitle-color;
+  font-size: $font-size-subtitle;
+  margin: $site-subtitle-margin;
+}
+
+
+/*
+.custom-logo-image {
+  background: white;
+  margin: 0 auto 10px;
+  max-width: 150px;
+  padding: 5px;
+}
+*/
+
+.custom-logo-image {
+  margin-top: 20px;
+
+  +tablet-mobile() {
+    display: none;
+  }
+}
+
+
+
+
+
+

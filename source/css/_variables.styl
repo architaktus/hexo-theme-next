@@ -428,3 +428,46 @@ $btn-default-hover-bg           = transparent;
 $btn-default-border-color       = var(--link-color);
 $btn-default-hover-color        = var(--link-hover-color);
 $btn-default-hover-border-color = var(--link-hover-color);
+
+
+
+// ROOT
+// ==================================================
+:root {
+  --container-width: 100%;
+  --device-orientation-beta: 0;
+  --device-orientation-gamma: 0;
+  --device-mouse-x: 0;
+  --device-mouse-y: 0;
+  --element-margin: 35px;
+  --gutter: 20px;
+  --navigation-height: 44px;
+  --navigation-width: 60px;
+  --outer-gutter: 30px;
+  --paragraph-margin: 35px;
+  --post-body-container-width: 100%;
+  --window-height: 100vh;
+  --window-width-offset: 0px;  
+}
+
+@media (min-width: 760px) {
+  :root {
+    --container-width: 560px;
+    --gutter: 40px;
+    --navigation-height: 60px;
+    --navigation-width: 60px;
+    --outer-gutter: 60px;
+    --post-body-container-width: 560px;
+  }
+}
+
+@media (min-width: 960px) {
+  :root {
+    --container-width: 640px;
+    --gutter: 40px;
+    --navigation-height: 80px;
+    --navigation-width: 80px;
+    --outer-gutter: 80px;
+    --post-body-container-width: 640px;
+  }
+}

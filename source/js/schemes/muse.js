@@ -9,8 +9,29 @@ document.addEventListener('DOMContentLoaded', () => {
     init : function() {
       window.addEventListener('mousedown', this.mousedownHandler.bind(this));
       window.addEventListener('mouseup', this.mouseupHandler.bind(this));
-      document.querySelector('.sidebar-dimmer').addEventListener('click', this.clickHandler.bind(this));
-      document.querySelector('.sidebar-toggle').addEventListener('click', this.clickHandler.bind(this));
+
+      //the half-ton layer on content when sidebar open, click to close sidebar //('.sidebar-dimmer')
+      const dimmer = document.querySelector('.sidebar-dimmer');
+      dimmer.addEventListener('click', this.toggleSidebarOnClick.bind(this));
+      dimmer.addEventListener('wheel', function(event){
+        if(document.body.classList.contains('sidebar-active')) {
+            event.preventDefault(); // 阻止滚动
+        }
+    }, {passive: false});
+
+      //click on sidebar where no content, close sidebar
+      const sidebar = document.querySelector('aside');
+      sidebar.addEventListener('click', function(event){
+        this.toggleSidebarOnClick.bind(this);
+        event.stopPropagation();
+      });
+      sidebar.addEventListener('wheel', function(event){
+        event.stopPropagation(); // 阻止滚动事件冒泡
+        console.log('阻止冒泡')
+      }, {passive: false});
+      //sidebar-toogle button
+      document.querySelector('.sidebar-toggle').addEventListener('click', this.toggleSidebarOnClick.bind(this));
+
       window.addEventListener('sidebar:show', this.showSidebar);
       window.addEventListener('sidebar:hide', this.hideSidebar);
     },
@@ -27,11 +48,12 @@ document.addEventListener('DOMContentLoaded', () => {
         this.hideSidebar();
       }
     },
-    clickHandler: function() {
+    toggleSidebarOnClick: function() {
       document.body.classList.contains('sidebar-active') ? this.hideSidebar() : this.showSidebar();
     },
     showSidebar: function() {
       document.body.classList.add('sidebar-active');
+      document.body.classList.add('no-scroll');
       const animateAction = isRight ? 'fadeInRight' : 'fadeInLeft';
       document.querySelectorAll('.sidebar .animated').forEach((element, index) => {
         element.style.animationDelay = (100 * index) + 'ms';
@@ -44,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     hideSidebar: function() {
       document.body.classList.remove('sidebar-active');
-
+      document.body.classList.remove('no-scroll');
     }
   };
   if (CONFIG.sidebar.display !== 'remove') sidebarToggleMotion.init();

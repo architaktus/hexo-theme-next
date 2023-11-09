@@ -1,11 +1,12 @@
 /* 按钮？ */
 .sidebar-toggle {
-  bottom: $b2t-position-bottom-on + $sidebar-toggle-size + 5px;
+  /*bottom: $b2t-position-bottom-on + $sidebar-toggle-size + 5px;*/
   height: $sidebar-toggle-inner-size;
   padding: $sidebar-toggle-padding;
   width: $sidebar-toggle-inner-size;
   sidebar-toggle();
 }
+
 
 .sidebar-toggle:hover .toggle-line {
   background: $sidebar-highlight;
@@ -17,6 +18,6 @@
   }
 }
 
-.sidebar-active .sidebar-toggle {
+.sidebar-active .sidebar-toggle .icon {
   toggle-close(hexo-config('sidebar.position'));
 }

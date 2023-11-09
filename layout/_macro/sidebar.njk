@@ -5,6 +5,8 @@
       {%- set display_toc = toc.length > 1 and display_toc %}
     {%- endif %}
 
+    {{ partial('_partials/sidebar/menu.njk', {}, {cache: theme.cache.enable}) }}
+
     <div class="sidebar-inner {% if display_toc %}sidebar-nav-active sidebar-toc-active{% else %}sidebar-overview-active{% endif %}">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
@@ -57,6 +59,12 @@
       </div>
     </div>
     {%- endif %}
+
+    <footer class="footer">
+      <div class="footer-inner">
+        {{ partial('_partials/footer.njk', {}, {cache: theme.cache.enable}) }}
+      </div>
+    </footer>
 
     {%- if theme.related_posts.enable %}
       {%- if theme.pjax %}

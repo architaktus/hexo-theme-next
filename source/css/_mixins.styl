@@ -1,3 +1,11 @@
+// 新内容
+// ==================================================
+
+
+
+
+// 原mixin
+// ==================================================
 mobile-smallest() {
   @media (max-width: 413px) {
     {block};
@@ -107,7 +115,10 @@ font-family-icons($icon = '') {
   font-weight: 900;
 }
 
-main-container() {
+
+//post内容缩进 TODO:
+/*main-container*/
+post-body() {
   margin: 0 auto;
   width: $content-desktop;
 
@@ -124,7 +135,8 @@ main-container() {
   }
 }
 
-sidebar-toggle-alignment($reverse) {
+
+/*sidebar-toggle-alignment($reverse) {
   $condition = hexo-config('sidebar.position') == 'right';
   if (($scheme == 'Muse') or ($scheme == 'Mist')) {
     $condition = $condition == $reverse;
@@ -138,15 +150,15 @@ sidebar-toggle-position($reverse) {
   +tablet-mobile() {
     {$alignment}: $b2t-position-right-mobile;
   }
-}
+}*/
 
 sidebar-toggle() {
   background: $b2t-bg-color;
   cursor: pointer;
   opacity: $b2t-opacity;
-  position: fixed;
+  /*position: fixed;
   z-index: $zindex-3;
-  sidebar-toggle-position(false);
+  sidebar-toggle-position(false);*/
 
   &:hover {
     opacity: $b2t-opacity-hover;
@@ -164,81 +176,70 @@ round-icon($diameter) {
   width: $diameter;
 }
 
+/*动态*/
 toggle-arrow($position) {
-  if ($position == 'right') {
+  //if ($position == 'right') {
+    :first-child{//span.icon一层
+      :first-child {
+        top: 15%;
+        transform: rotate(-45deg);
+        width: 50%;
+      }
+
+      :last-child {
+        top: -15%;
+        transform: rotate(45deg);
+        width: 50%;
+      }
+    }
+  /*} else {
     :first-child {
-      top: 2px;
-      transform: rotate(-45deg);
+      left: 50%;
+      top: 40%;
+      transform: rotate(45deg);
       width: 50%;
     }
 
     :last-child {
-      top: -2px;
-      transform: rotate(45deg);
-      width: 50%;
-    }
-  } else {
-    :first-child {
       left: 50%;
-      top: 2px;
-      transform: rotate(45deg);
-      width: 50%;
-    }
-
-    :last-child {
-      left: 50%;
-      top: -2px;
+      top: -40%;
       transform: rotate(-45deg);
       width: 50%;
     }
-  }
+  }*/
 }
 
 toggle-close($position) {
   :nth-child(2) {
     opacity: 0;
   }
-
-  if ($position == 'right') {
+  //35% 因为现在顶上margin 10%,下二者 30% = 10/2 +30
+  //if ($position == 'right') {
     :first-child {
-      top: 6px;
+      top: 35%; 
       transform: rotate(-45deg);
     }
 
     :last-child {
-      top: -6px;
+      top: -35%;//-6px
       transform: rotate(45deg);
     }
+    /*
   } else {
     :first-child {
-      top: 6px;
+      top: 40%;
       transform: rotate(45deg);
     }
 
     :last-child {
-      top: -6px;
+      top: -40%;
       transform: rotate(-45deg);
     }
   }
+  */
 }
 
-site-nav-hide-by-default() {
-  --scroll-height: 0;
-  height: 0;
-  overflow: hidden;
-  transition: $transition-ease;
-  transition-property: height, visibility;
-  visibility: hidden;
 
-  body:not(.site-nav-on) & .animated {
-    animation: none;
-  }
-
-  body.site-nav-on & {
-    height: var(--scroll-height);
-    visibility: unset;
-  }
-}
 
 button($color) {
   background: transparent;

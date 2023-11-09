@@ -1,9 +1,22 @@
+/*
 .site-meta {
   flex-grow: 1;
   text-align: center;
+  line-height: normal;
 
   +mobile() {
     text-align: center;
+  }
+
+  .brand {
+    //background: var(--btn-default-bg);
+    +mobile() {
+      display: block;
+    }
+  }
+
+  .site-title {
+    font-weight: bolder;
   }
 }
 
@@ -18,8 +31,12 @@
 .brand {
   border-bottom: 0;
   color: var(--brand-color);
-  display: inline-block;
+  display: inline-block;//display: block;
   padding: $brand-padding;
+
+  flex-grow: 1;
+  text-align: center;
+  line-height: normal;
 
   &:hover {
     color: var(--brand-hover-color);
@@ -29,7 +46,8 @@
 .site-title {
   font-family: $font-family-logo;
   font-size: $font-size-title;
-  font-weight: normal;
+  font-weight: bolder;//normal;
+
   line-height: 1.5;
   margin: 0;
 }
@@ -47,3 +65,17 @@
     top: -10px;
   }
 }
+
+
+.logo-line {
+  background: var(--brand-color);
+  display: block;
+  height: 2px;
+  margin: 0 auto;
+  width: 75%;
+
+  +mobile() {
+    display: none;
+  }
+}
+*/

@@ -11,44 +11,50 @@
   </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage"{% if theme.motion.enable %} class="use-motion"{% endif %}>
+{# class加上home：设置主页背景色 #}
+<body itemscope itemtype="http://schema.org/WebPage" class="
+    {% if theme.motion.enable %}use-motion{% endif %}
+    {% if is_home() %}home{% endif %}
+  ">
+
+
   <div class="headband"></div>
 
+  {# 特殊悬浮物 #}
+  <div class="navigation">
+    {# 搜索弹窗 #}
+    {{ partial('_partials/search/index.njk', {}, {cache: theme.cache.enable}) }}
+
+    {# 语言 #}
+    {%- include '_partials/languages.njk' -%}
+
+    {# 悬浮按钮 #}
+    {{ partial('_partials/widgets.njk', {}, {cache: theme.cache.enable}) }}
+
+    {# 侧边栏 #}
+    {# {%- if theme.sidebar.display !== 'remove' %} #}
+    {% block sidebar %}{% endblock %}
+    {# {%- endif %} #}
+  </div>
+
+
   <main class="main">
+    {#
     <div class="column">
       <header class="header" itemscope itemtype="http://schema.org/WPHeader">
         {%- include '_partials/header/index.njk' -%}
       </header>
     </div>
+    #}
 
     <div class="main-inner {% block class %}{% endblock %}">
-      {%- include '_partials/header/sub-menu.njk' -%}
+      {# {%- include '_partials/sidebar/sub-menu.njk' -%} #}
       {% block content %}{% endblock %}
       {%- include '_partials/comments.njk' -%}
     </div>
   </main>
 
-
-  {# 特殊悬浮物 #}
-  <div class="navigation">
-
-    {# 悬浮按钮 #}
-    <nav class="navigation__button">
-      {{ partial('_partials/widgets.njk', {}, {cache: theme.cache.enable}) }}
-    </nav>
-
-    {# 侧边栏 #}
-    {%- if theme.sidebar.display !== 'remove' %}
-      {% block sidebar %}{% endblock %}
-    {%- endif %}
-  </div>
-
-  <footer class="footer">
-    <div class="footer-inner">
-      {%- include '_partials/languages.njk' -%}
-      {{ partial('_partials/footer.njk', {}, {cache: theme.cache.enable}) }}
-    </div>
-  </footer>
+  {# 原footer位置，现footer在各所需页面中（主页 菜单 about等） #}
 
   {{ partial('_scripts/index.njk', {}, {cache: theme.cache.enable}) }}
   {{ partial('_third-party/index.njk', {}, {cache: theme.cache.enable}) }}

@@ -1,13 +1,22 @@
 {# Widgets with fixed position #}
 
-{%- if theme.sidebar.display !== 'remove' and (theme.scheme === 'Muse' or theme.scheme === 'Mist') %}
-  <div class="toggle sidebar-toggle" role="button">
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-  </div>
-  <div class="sidebar-dimmer"></div>
-{%- endif %}
+<nav class="navigation__menu">
+  <a class="navigation__menu__item site-logo" role="button">
+    <span class="icon">
+      <i class="fa fa-arrow-left fa-lg"></i>{# TODO logo#}
+    </span>
+  </a>
+
+  {#{%- if theme.sidebar.display !== 'remove' and (theme.scheme === 'Muse' or theme.scheme === 'Mist') %}#}
+    <div class="navigation__menu__item toggle sidebar-toggle" role="button">
+      <span class="icon">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+      </span>
+    </div>  
+  {#{%- endif %}#}
+</nav>
 
 {%- if theme.back2top.enable and not theme.back2top.sidebar %}
   <div class="back-to-top" role="button" aria-label="{{ __('accessibility.back_to_top') }}">
@@ -24,6 +33,7 @@
   <a role="button" class="book-mark-link book-mark-link-fixed"></a>
 {%- endif %}
 
+{# 
 {%- if theme.github_banner.enable %}
   {%- set github_URL = theme.github_banner.permalink %}
   {%- set github_title = __('widget.github') %}
@@ -32,7 +42,35 @@
 
   {{ next_url(github_URL, github_image, {class: 'github-corner', title: github_title, "aria-label": github_title}) }}
 {%- endif %}
+#}
 
+
+{# 原位于header内的手机的toggle按钮
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="{{ __('accessibility.nav_toggle') }}" role="button">
+      {%- if theme.menu %}
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+      {%- endif %}
+    </div>
+  </div>
+
+  TODO此为搜索按钮，后续可挪到sidebar
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="{{ __('menu.search') }}" role="button">
+      {%- if theme.algolia_search.enable or theme.local_search.enable %}
+        <i class="fa fa-search fa-fw fa-lg"></i>
+      {%- endif %}
+    </div>
+  </div>
+   #}
+
+
+{# 弹出menu 其他区域变暗 #}
+<div class="sidebar-dimmer"></div>
+
+{# 禁用js时显示的内容 #}
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
 </noscript>

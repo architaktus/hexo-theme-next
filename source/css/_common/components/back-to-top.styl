@@ -1,6 +1,9 @@
 if (hexo-config('back2top.enable')) {
   .back-to-top {
     font-size: $b2t-font-size;
+    position: fixed;
+    right: 0;
+    margin-right: calc(var(--outer-gutter) - 26px + env(safe-area-inset-right));
 
     span {
       margin-right: 8px;

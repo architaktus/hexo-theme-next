@@ -7,7 +7,7 @@ NexT.boot.registerEvents = function() {
   NexT.utils.registerScrollPercent();
   NexT.utils.registerCanIUseTag();
 
-  // Mobile top menu bar.
+/*  // Mobile top menu bar.
   document.querySelector('.site-nav-toggle .toggle').addEventListener('click', event => {
     event.currentTarget.classList.toggle('toggle-close');
     const siteNav = document.querySelector('.site-nav');
@@ -15,6 +15,7 @@ NexT.boot.registerEvents = function() {
     siteNav.style.setProperty('--scroll-height', siteNav.scrollHeight + 'px');
     document.body.classList.toggle('site-nav-on');
   });
+*/
 
   document.querySelectorAll('.sidebar-nav li').forEach((element, index) => {
     element.addEventListener('click', () => {

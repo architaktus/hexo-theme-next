@@ -7,11 +7,31 @@
 
 {% block content %}
 
-  {%- for post in page.posts.toArray() %}
-    {{ partial('_macro/post.njk', {post: post, is_index: true}) }}
-  {%- endfor %}
+  {#<div class="column">#}
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    {%- include '_partials/header.njk' -%}
+  </header>
+  {#</div>#}
+  
+  <div class="home__blocks">
+    {# home主页封面 #}
 
-  {%- include '_partials/pagination.njk' -%}
+    {# 各系列杂志栏 #}
+
+    {# 各tag #}
+
+    {%- for post in page.posts.toArray() %}
+      {{ partial('_macro/post.njk', {post: post, is_index: true}) }}
+    {%- endfor %}
+
+    {%- include '_partials/pagination.njk' -%}
+
+    <footer class="footer">
+      <div class="footer-inner">
+        {{ partial('_partials/footer.njk', {}, {cache: theme.cache.enable}) }}
+      </div>
+    </footer>
+  </div>
 
 {% endblock %}
 

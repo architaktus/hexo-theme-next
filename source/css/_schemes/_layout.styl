@@ -1,16 +1,96 @@
-//原muse +mist
-header.header {
-  main-container();
-}
+// ==================================================
+// 总框架
+// ==================================================
 
+
+//所有页面的总框架
+// --------------------------------------------------
 .main-inner {
-  main-container();
+  // 左右缩进 详见variable -> ROOT
+  padding-left: var(--outer-gutter);
+  padding-right: var(--outer-gutter);
+  /*min-height: 100vh;
+  min-height: var(--window-height);*/
+
   padding-bottom: $content-padding-bottom;
 
   +mobile() {
     padding-left: 20px;
     padding-right: 20px;
   }
+}
+
+.no-scroll{
+  overflow: hidden;
+  height: 100%; 
+}
+
+// ==================================================
+// 各页
+// ==================================================
+// Homepage
+// --------------------------------------------------
+//背景
+body.home {
+  background-color: #2e0008; //#ad0c27;
+  /*background-image: url();*/
+  background-position: center center;
+  background-size: cover;
+}
+
+.index {
+  position: relative;
+  /*min-height: 100vh;
+  min-height: var(--window-height);*/
+}
+
+//主体内容的wrapper
+.home__blocks {
+  margin-left: -30px;
+  margin-right: -30px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+@media (min-width: 760px) {
+  .home__blocks {
+    margin-left: -60px;
+    margin-right: -60px;
+    padding-left: 60px;
+    padding-right: 60px;
+    margin-top: -60px;
+    border: 60px solid transparent;
+    border-top-width: 60px;
+    border-right-width: 60px;
+    border-bottom-width: 60px;
+    border-bottom-style: solid;
+    border-bottom-color: transparent;
+    border-left-width: 60px;
+    border-bottom: 0;
+  }
+}
+@media (min-width: 960px) {
+  .home__blocks {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+    border-width: 80px;
+    border-bottom-width: 80px;
+    border-bottom: 0;
+  }
+}
+// Poster
+// --------------------------------------------------
+
+
+
+// ==================================================
+// 组件
+// ==================================================
+
+//大标题
+header.header {
+  post-body();
 }
 
 // Page - Container
@@ -23,9 +103,90 @@ header.header {
   }
 }
 
+// navigation 大组
+// --------------------------------------------------
+//大组wrapper类均不可点
+.navigation{
+  pointer-events: none;
+  }
+// 悬浮的左右上角按钮
+.navigation__menu {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  right: var(--window-width-offset);
+  color: #ddd;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+  z-index: 8;
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+@media (min-width: 760px) {
+  .navigation__menu {
+    padding-left: calc(15px + env(safe-area-inset-left));
+    padding-right: calc(15px + env(safe-area-inset-right));
+  }
+}
+.navigation__menu__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-bottom: 0;//去掉链接的下划线
+  background: none;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  pointer-events: auto;
+  font-size: 25px;
+  width: var(--navigation-width);
+  height: var(--navigation-height);
+  }
+
+@media (min-width: 760px) {
+  .navigation__menu__item {
+    font-size: 36px;
+    line-height: 1;
+  }
+}
+@media (min-width: 960px) {
+  .navigation__menu__item {
+    font-size: 40px;
+    line-height: 1;
+  }
+}
+
+.navigation__menu__item .icon{
+  display: block;
+  pointer-events: none;
+  margin: auto;
+  }
+
+.navigation__menu__item.sidebar-toggle .icon{
+  width: 50%;
+  height: 50%;
+  }
+
+// ==================================================
+// 元素
+// ==================================================
 
 //原 mist 
-
 // Tags
 // --------------------------------------------------
 hr {
@@ -65,5 +226,3 @@ hr {
     text-align: center;
   }
 }
-
-
