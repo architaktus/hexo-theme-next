@@ -1,0 +1,25 @@
+{##################}
+{###    CARD    ###}
+{##################}
+<div class="card-stack__card">
+    {# 链接 #}
+    {# seh. next/scripts/next-url.js (另 scripts下engine.js的引用) (又 next/test/helpers/next-url.js) #}
+    {# {{- next_url(post.path, post.title or __('post.untitled'), {class: 'card-stack__card__link', itemprop: 'url'}) }} #}
+    <a class="card-stack__card__link" href="{{post.path}}" itemprop="url"></a>
+
+    {# Inhalt #}
+    <div class="card-stack__card__headline">
+        {# Text #}
+        <div class="headline-card__content">
+            <h3 class="headline-card__headline">
+                {{post.title}}
+            </h3>
+        </div>
+        {# background media in card #}
+        <div class="headline-card__bg degraded">
+            <div class="card__background__media">
+                {# TODO #}
+            </div>
+        </div>
+    </div>
+</div>

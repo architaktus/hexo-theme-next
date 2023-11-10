@@ -1,0 +1,27 @@
+{##################}
+{### CARD STACK ###}
+{##################}
+
+<div class="card-stack-block">
+    {# TODO category.name 是否断开，断开则...见card-stack.styl #}
+    <div class="card-stack-block__heading" data-label="primary">
+        {{ category.name }}
+    </div>
+
+    <div class="card-stack-block__box">
+        {# 对上级居中 #}
+        <div class="card-stack-block__card-outer-wrapper">
+            {# 内部排列 #}
+            <div class="card-stack-block__card-inner-wrapper">
+                {%- for post in category.posts.toArray() %}
+                    {{ partial('_macro/card-stack-card.njk', {post: post}) }}
+                {%- endfor %}
+            </div>
+        </div>
+    </div>
+
+    {# TODO 
+    <div class="card-stack-block__heading" data-label="secondary">
+        {{ category.name }}
+    </div>#}
+</div>

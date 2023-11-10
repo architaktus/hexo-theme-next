@@ -6,6 +6,7 @@
 
 // 原mixin
 // ==================================================
+// breakpoints: 媒体查询，来自于 CSS 框架 Bootstrap
 mobile-smallest() {
   @media (max-width: 413px) {
     {block};
@@ -89,10 +90,16 @@ sidebar-inline-links-item() {
   }
 }
 
-flex-wrap() {
+flex-wrap-center() {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+flex-wrap() {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: normal;
 }
 
 flex-column() {

@@ -42,5 +42,8 @@
     "mocha": "10.2.0",
     "stylelint": "15.10.3",
     "stylelint-stylus": "0.18.0"
+  },
+  "dependencies": {
+    "warehouse": "^5.0.0"
   }
 }

@@ -17,6 +17,12 @@
     {# home主页封面 #}
 
     {# 各系列杂志栏 #}
+    {# Hexo 使用 Warehouse 存储数据，它不是一般数组所以必须先进行类型转型才能遍历。https://hexo.io/zh-cn/docs/troubleshooting.html#%E5%9C%A8-Jade-%E6%88%96-Swig-%E9%81%8D%E5%8E%86%E6%95%B0%E6%8D%AE #}
+    {%- for category in site.categories.toArray() %}
+      {%- if not category.parent %}
+      {{ partial('_macro/card-stack.njk', {category: category}) }}
+      {%- endif %}
+    {%- endfor %}
 
     {# 各tag #}
 
